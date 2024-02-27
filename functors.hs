@@ -3,11 +3,9 @@
 -- type. They help generalizing functions for different types and help us write minimal programs using a very 
 -- small set of explicit type variables. 
 
-
 class Functor1 f where
     fmap1 :: (a -> b) -> f a -> f b
-
--- fmap1 is a function of normal type a -> b which takes an input of the type f a and can produce the generalized functor type result. 
+    -- fmap1 is a function of normal type a -> b which takes an input of the type f a and can produce the generalized functor type result. 
 
 instance Functor1 [] where
     fmap1 = map
@@ -15,7 +13,7 @@ instance Functor1 [] where
 
 -- Addition function which performs addition on every element in the list.
 add1 :: [Int] -> [Int]
-add1 xs = fmap1 (+1) xs
+add1 = fmap1 (+1)
 
 data Maybe1 a = Just1 a | Nothing1 deriving (Show, Read) 
 
@@ -24,4 +22,10 @@ instance Functor1 Maybe1 where
     fmap1 _ Nothing1 = Nothing1 
     fmap1 g (Just1 x) = Just1 (g x)
 
+-- Generalizing functions using the Functor type class for instances of the Functor type class
+
+inc1 :: Functor1 f => f Int -> f Int
+inc1 = fmap1 (+1)
+
+-- Functors are required to satisfy 2 laws : The identity law and the composition law
 
