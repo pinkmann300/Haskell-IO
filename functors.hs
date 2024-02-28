@@ -39,3 +39,11 @@ instance Applicative1 Maybe1 where
     Nothing1 <**> _ = Nothing1
     (Just1 g) <**> mx = fmap1 g mx
 
+instance Applicative1 [] where 
+    pure1 x = [x]
+    gs <**> xs = [g x | g <- gs, x <- xs]
+
+
+
+
+    
