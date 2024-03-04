@@ -13,5 +13,3 @@ instance Functor1 ((->) a) where
     -- :t (fmap) = (r -> m) -> (a -> r) -> (a -> m)
     -- You provide a function of type (r -> m) and in the partially applied function type you get (a -> r) as your f a element. 
     -- The existing library function which allows us to acheive this is the composition function. 
-
-

@@ -43,7 +43,11 @@ instance Applicative1 [] where
     pure1 x = [x]
     gs <**> xs = [g x | g <- gs, x <- xs]
 
+-- Function to compute the cartesian product of two lists 
 
+cartProd :: [Int] -> [Int] -> [Int] 
+cartProd gs xs = pure1 (*) <**> gs <**> xs
 
+getChars :: Int -> IO String
+getChars n = sequenceA (replicate n getChar)
 
-    

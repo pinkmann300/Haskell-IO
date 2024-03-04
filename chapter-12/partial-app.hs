@@ -11,6 +11,3 @@ class Functor1 f => Applicative1 f where
 instance Applicative1 ((->) a) where
     pure1 = const  
     gs <**> ps = \x -> gs x (ps x)
-
-
-
